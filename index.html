@@ -1,0 +1,112 @@
+<!doctype html>
+	<head>
+		<title>spezi-clan.com - since 2001</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+		<link href='http://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	</head>
+	<body ng-app="single-page-app">
+		<div ng-controller="cfgController" class="wrapper">
+			<div class="box1"></div>
+			<div class="container">
+				<div class="page">
+					<div ng-view></div>
+					<a class="server-screen" rel="tab" title="Server" href="#/server"></a>
+					<a class="server" rel="tab" title="Server" href="#/server"></a>
+					<a class="crab" rel="tab" title="Home" href="#/"></a>
+					<a class="coke" rel="tab" title="Members" href="#/members"></a>
+					<a class="project" rel="tab" title="Projects" href="#/projects"></a>
+					<a class="faq" rel="tab" title="F.A.Q." href="#/faq"></a>
+					<a class="history" rel="tab" title="History" href="#/history"></a>
+					<a class="hlstats" rel="tab" title="HL-Stats" href="#/hlstats"></a>
+				</div>
+				<div class="menu">
+					<ul class="menu-list">
+						<li><a class="home_nav" rel="tab" href="#/">Home</a></li>
+						<li><a class="server_nav" rel="tab" href="#/server">Server</a></li>
+						<li><a class="hlstats_nav" rel="tab" href="#/hlstats">HLstats</a></li>
+						<li><a class="members_nav" rel="tab" href="#/members">Members</a></li>
+						<li><a class="history_nav" rel="tab" href="#/history">History</a></li>
+						<li><a class="faq_nav" rel="tab" href="#/faq">F.A.Q.</a></li>
+						<li><a class="project_nav" rel="tab" href="#/projects">Projects</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="footer_logo"></div>
+			</div>
+		</div>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+ 		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
+		<!-- Contentloader & Url  -->
+		<script>
+			var app=angular.module('single-page-app',['ngRoute']);
+				app.config(function($routeProvider){
+				      $routeProvider
+				          .when('/',{
+				                templateUrl: 'home.html'
+				          })
+				          .when('/server',{
+				                templateUrl: 'server.html'
+				          })
+				          .when('/hlstats',{
+				                templateUrl: 'hlstats.html'
+				          })
+				          .when('/members',{
+				                templateUrl: 'members.html'
+				          })
+				          .when('/history',{
+				                templateUrl: 'history.html'
+				          })
+				          .when('/faq',{
+				                templateUrl: 'faq.html'
+				          })
+				          .when('/projects',{
+				                templateUrl: 'projects.html'
+				          });
+				});
+
+
+				app.controller('cfgController',function($scope){
+
+		    /*
+		    Here you can handle controller for specific route as well.
+		    */
+		});
+		</script>
+		<!-- Scrollbar -->
+		<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script>
+    		(function($){
+       			$(window).load(function(){
+            	$(".content").mCustomScrollbar();
+        	});
+    		})(jQuery);
+		</script>
+		<!-- Menu -->
+		<script>
+			multiHov([$('.crab'), $('.home_nav')]);
+			multiHov([$('.server'), $('.server_nav')]);
+			multiHov([$('.hlstats'), $('.hlstats_nav')]);
+			multiHov([$('.coke'), $('.members_nav')]);
+			multiHov([$('.history'), $('.history_nav')]);
+			multiHov([$('.faq'), $('.faq_nav')]);
+			multiHov([$('.project'), $('.project_nav')]);
+			function multiHov(elems) {
+			    elems.forEach(function(e) {
+			        e.hover(function() {multiToggle(elems);},
+			                function() {multiToggle(elems);});
+			    });
+			}
+			function multiToggle(elems) {
+			    elems.forEach(function(e) {
+			        e.toggleClass('hover');
+			    });
+			}
+		</script>
+	</body>
+</html>
